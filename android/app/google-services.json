@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "130652190454",
+    "project_id": "med-data-e1705",
+    "storage_bucket": "med-data-e1705.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:130652190454:android:e3faafed06da1dd9c99ed7",
+        "android_client_info": {
+          "package_name": "com.example.get_medicine_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "130652190454-tc1igo6pb8126r2tsqh9v7bkb735qcj8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAd6NCu_ERPux3o01dVAOJs2J4KDYRo8to"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "130652190454-tc1igo6pb8126r2tsqh9v7bkb735qcj8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "130652190454-kk2o7jjudkb07sm69eldppo3c38c7j2l.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.getMedicineProject"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
