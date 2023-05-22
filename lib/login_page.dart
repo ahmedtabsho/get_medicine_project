@@ -1,5 +1,5 @@
 // ignore: depend_on_referenced_packages
-import 'package:get_medicine_project/choiceOperation.dart';
+import 'package:get_medicine_project/choice_operation.dart';
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe, depend_on_referenced_packages
 import 'auth_service.dart';
