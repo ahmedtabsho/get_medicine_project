@@ -81,7 +81,7 @@ class _ChoiceOperationState extends State<ChoiceOperation> {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                 ),
                 child: const Text(
                   'İlaç Al',

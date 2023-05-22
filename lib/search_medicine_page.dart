@@ -6,6 +6,7 @@ class SearchMedicine extends StatefulWidget {
   const SearchMedicine({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _SearchMedicineState createState() => _SearchMedicineState();
 }
 
@@ -40,8 +41,6 @@ class _SearchMedicineState extends State<SearchMedicine> {
   }
 
   void requestMedicine(String medName, String medId) {
-    // İlaç isteği ile ilgili işlemler burada yapılabilir
-    print("İlaç isteği gönderildi: $medName (ID: $medId)");
 
     Navigator.push(
       context,

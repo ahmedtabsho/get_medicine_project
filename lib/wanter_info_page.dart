@@ -9,7 +9,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 class GetWanterInfo extends StatefulWidget {
   final String medId;
 
-  GetWanterInfo(this.medId, {Key? key}) : super(key: key);
+  const GetWanterInfo(this.medId, {Key? key}) : super(key: key);
 
   @override
   State<GetWanterInfo> createState() => _GetWanterInfoState();
@@ -44,7 +44,6 @@ class _GetWanterInfoState extends State<GetWanterInfo> {
       'Adress': _adresController.text,
       };
       if( _cityController.text == "" || _nameController.text == "" || _adresController.text == "" || _tcController.text == ""){
-        print("buraya girdi-----------------------------------------");
         throw Exception("doğru bilgiler girin lürfen.");
       }
 
