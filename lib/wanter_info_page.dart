@@ -6,22 +6,22 @@ import 'package:get_medicine_project/choice_operation.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 
-class MedicineInfoWidget extends StatefulWidget {
-  const MedicineInfoWidget({Key? key}) : super(key: key);
+class GetWanterInfo extends StatefulWidget {
+  final String medId;
+
+  GetWanterInfo(this.medId, {Key? key}) : super(key: key);
 
   @override
-  State<MedicineInfoWidget> createState() => _MedicineInfoWidgetState();
+  State<GetWanterInfo> createState() => _GetWanterInfoState();
 }
 
-class _MedicineInfoWidgetState extends State<MedicineInfoWidget> {
+class _GetWanterInfoState extends State<GetWanterInfo> {
   late FirebaseAuth _auth;
   late FirebaseFirestore _firestore;
   final TextEditingController _tcController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _medNameController = TextEditingController();
   final TextEditingController _cityController = TextEditingController();
   final TextEditingController _adresController = TextEditingController();
-  final TextEditingController _medInfoController = TextEditingController();
 
   @override
   void initState() {
@@ -31,27 +31,34 @@ class _MedicineInfoWidgetState extends State<MedicineInfoWidget> {
     _nameController.text = _auth.currentUser!.displayName!;
   }
 
-  Future<void> setNewMed() async {
+  Future<void> setNewReq() async {
     try {
-      final newMed = _firestore.collection("Medicines").doc(); // doc() parametresiz kullanarak yeni bir doküman referansı alın
-      if(_medNameController.text == "" || _cityController.text == "" || _nameController.text == "" || _adresController.text == "" || _tcController.text == ""){
-        print("buraya girdi");
+      final newReq = _firestore.collection("Requestes").doc(); // doc() parametresiz kullanarak yeni bir doküman referansı alın
+      var documentSnapshot = await FirebaseFirestore.instance.collection('Medicines').doc(widget.medId).get();
+      var sender = documentSnapshot.data();
+      final wanter = {
+      'UserName': _nameController.text,
+      'UserID': _auth.currentUser!.uid,
+      'UserTC': _tcController.text,
+      'City': _cityController.text,
+      'Adress': _adresController.text,
+      };
+      if( _cityController.text == "" || _nameController.text == "" || _adresController.text == "" || _tcController.text == ""){
+        print("buraya girdi-----------------------------------------");
         throw Exception("doğru bilgiler girin lürfen.");
       }
-      await newMed.set(
+
+      await newReq.set(
         {
-          'UserName': _nameController.text,
-          'UserID': _auth.currentUser!.uid,
-          'UserTC': _tcController.text,
-          'medName': _medNameController.text,
-          'City': _cityController.text,
-          'Adress': _adresController.text,
-          'MedInfo': _medInfoController.text,
+          'Sender': sender,
+          'Wanter': wanter,
         },
       );
+      await FirebaseFirestore.instance.collection('SendingMedicines').doc().set(sender!);
+      await FirebaseFirestore.instance.collection('Medicines').doc(widget.medId).delete();
 
       Fluttertoast.showToast(
-        msg: "İlaç Bilgileri kaydedildi, teşekkürler.",
+        msg: "Talebinizi oluşturduk en kısa sürede ilaç elinize ulaçaktır.",
         toastLength: Toast.LENGTH_LONG,
         gravity: ToastGravity.BOTTOM,
         backgroundColor: Colors.blueAccent,
@@ -77,11 +84,12 @@ class _MedicineInfoWidgetState extends State<MedicineInfoWidget> {
     }
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-
-    return Scaffold(
+    return  Scaffold(
         body: Stack(
           children: [
             Center(
@@ -106,9 +114,8 @@ class _MedicineInfoWidgetState extends State<MedicineInfoWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           TextField(
-
-                            keyboardType: TextInputType.number,
-                            controller: _tcController,
+                              keyboardType: TextInputType.number,
+                              controller: _tcController,
                               style: const TextStyle(
                                 color: Colors.white,
                               ),
@@ -154,32 +161,9 @@ class _MedicineInfoWidgetState extends State<MedicineInfoWidget> {
                           SizedBox(
                             height: size.height * 0.02,
                           ),
-                          TextField(
-                              controller: _medNameController,
-                              style: const TextStyle(
-                                color: Colors.white,
-                              ),
-                              cursorColor: Colors.white,
-                              decoration: const InputDecoration(
 
-                                hintText: '   İlaç adı',
-                                prefixText: ' ',
-                                hintStyle: TextStyle(color: Colors.white),
-                                focusColor: Colors.white,
-                                focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.white,
-                                    )),
-                                enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.white,
-                                    )),
-                              )),
-                          SizedBox(
-                            height: size.height * 0.02,
-                          ),
                           TextField(
-                            controller: _cityController,
+                              controller: _cityController,
                               style: const TextStyle(
                                 color: Colors.white,
                               ),
@@ -203,7 +187,7 @@ class _MedicineInfoWidgetState extends State<MedicineInfoWidget> {
                             height: size.height * 0.02,
                           ),
                           TextField(
-                            controller: _adresController,
+                              controller: _adresController,
                               style: const TextStyle(
                                 color: Colors.white,
                               ),
@@ -223,35 +207,12 @@ class _MedicineInfoWidgetState extends State<MedicineInfoWidget> {
                                       color: Colors.white,
                                     )),
                               )),
-                          SizedBox(
-                            height: size.height * 0.02,
-                          ),
-                          TextField(
-                            controller: _medInfoController,
-                              style: const TextStyle(
-                                color: Colors.white,
-                              ),
-                              cursorColor: Colors.white,
-                              decoration: const InputDecoration(
 
-                                hintText: '   İlaç bilgisi',
-                                prefixText: ' ',
-                                hintStyle: TextStyle(color: Colors.white),
-                                focusColor: Colors.white,
-                                focusedBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.white,
-                                    )),
-                                enabledBorder: UnderlineInputBorder(
-                                    borderSide: BorderSide(
-                                      color: Colors.white,
-                                    )),
-                              )),
                           SizedBox(
                             height: size.height * 0.08,
                           ),
                           InkWell(
-                            onTap: setNewMed,
+                            onTap: setNewReq,
                             child: Container(
                               padding: const EdgeInsets.symmetric(vertical: 5),
                               decoration: BoxDecoration(
@@ -300,7 +261,7 @@ class _MedicineInfoWidgetState extends State<MedicineInfoWidget> {
                       width: size.width * 0.3,
                     ),
                     Text(
-                      "İlaç Bırak",
+                      "İlaç iste",
                       style: TextStyle(
                           fontSize: 20,
                           color: Colors.blue.withOpacity(.75),
