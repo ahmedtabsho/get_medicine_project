@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'medicine_info_page.dart';
+import 'search_medicine_page.dart';
 
 class ChoiceOperation extends StatefulWidget {
   const ChoiceOperation({Key? key}) : super(key: key);
@@ -11,7 +14,7 @@ class ChoiceOperation extends StatefulWidget {
 
 class _ChoiceOperationState extends State<ChoiceOperation> {
   late User? auth;
-  FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   String name = '';
 
   @override
@@ -47,41 +50,41 @@ class _ChoiceOperationState extends State<ChoiceOperation> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               width: 200, // desired width
               height: 75, // desired height
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const LoginWidget()),
+                    MaterialPageRoute(builder: (context) => const MedicineInfoWidget()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                 ),
-                child: Text(
-                  'İlaç Al',
+                child: const Text(
+                  'İlaç Gönder',
                   style: TextStyle(fontSize: 20),
                 ),
               ),
             ),
-            SizedBox(height: 16),
-            Container(
+            const SizedBox(height: 15,),
+            SizedBox(
               width: 200, // desired width
               height: 75, // desired height
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const LoginWidget()),
+                    MaterialPageRoute(builder: (context) => const SearchMedicine()),
                   );
                 },
                 style: ElevatedButton.styleFrom(
                   padding: EdgeInsets.all(16),
                 ),
-                child: Text(
-                  'İlaç Bırak',
+                child: const Text(
+                  'İlaç Al',
                   style: TextStyle(fontSize: 20),
                 ),
               ),
