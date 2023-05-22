@@ -35,7 +35,6 @@ class _MedicineInfoWidgetState extends State<MedicineInfoWidget> {
     try {
       final newMed = _firestore.collection("Medicines").doc(); // doc() parametresiz kullanarak yeni bir doküman referansı alın
       if(_medNameController.text == "" || _cityController.text == "" || _nameController.text == "" || _adresController.text == "" || _tcController.text == ""){
-        print("buraya girdi");
         throw Exception("doğru bilgiler girin lürfen.");
       }
       await newMed.set(
