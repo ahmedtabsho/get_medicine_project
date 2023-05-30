@@ -5,6 +5,91 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_medicine_project/choice_operation.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+const List<String> list = <String>[
+  'Adana',
+  'Adıyaman',
+  'Afyonkarahisar',
+  'Ağrı',
+  'Aksaray',
+  'Amasya',
+  'Ankara',
+  'Antalya',
+  'Ardahan',
+  'Artvin',
+  'Aydın',
+  'Balıkesir',
+  'Bartın',
+  'Batman',
+  'Bayburt',
+  'Bilecik',
+  'Bingöl',
+  'Bitlis',
+  'Bolu',
+  'Burdur',
+  'Bursa',
+  'Çanakkale',
+  'Çankırı',
+  'Çorum',
+  'Denizli',
+  'Diyarbakır',
+  'Düzce',
+  'Edirne',
+  'Elazığ',
+  'Erzincan',
+  'Erzurum',
+  'Eskişehir',
+  'Gaziantep',
+  'Giresun',
+  'Gümüşhane',
+  'Hakkâri',
+  'Hatay',
+  'Iğdır',
+  'Isparta',
+  'İstanbul',
+  'İzmir',
+  'Kahramanmaraş',
+  'Karabük',
+  'Karaman',
+  'Kars',
+  'Kastamonu',
+  'Kayseri',
+  'Kırıkkale',
+  'Kırklareli',
+  'Kırşehir',
+  'Kilis',
+  'Kocaeli',
+  'Konya',
+  'Kütahya',
+  'Malatya',
+  'Manisa',
+  'Mardin',
+  'Mersin',
+  'Muğla',
+  'Muş',
+  'Nevşehir',
+  'Niğde',
+  'Ordu',
+  'Osmaniye',
+  'Rize',
+  'Sakarya',
+  'Samsun',
+  'Siirt',
+  'Sinop',
+  'Sivas',
+  'Şanlıurfa',
+  'Şırnak',
+  'Tekirdağ',
+  'Tokat',
+  'Trabzon',
+  'Tunceli',
+  'Uşak',
+  'Van',
+  'Yalova',
+  'Yozgat',
+  'Zonguldak'
+];
+String dropdownValue = list.first;
+
 class GetWanterInfo extends StatefulWidget {
   final String medId;
 
@@ -44,11 +129,10 @@ class _GetWanterInfoState extends State<GetWanterInfo> {
         'UserName': _nameController.text,
         'UserID': _auth.currentUser!.uid,
         'UserTC': _tcController.text,
-        'City': _cityController.text,
+        'City': dropdownValue,
         'Adress': _adresController.text,
       };
-      if (_cityController.text == "" ||
-          _nameController.text == "" ||
+      if (_nameController.text == "" ||
           _adresController.text == "" ||
           _tcController.text == "") {
         throw Exception("doğru bilgiler girin lürfen.");
@@ -170,29 +254,32 @@ class _GetWanterInfoState extends State<GetWanterInfo> {
                       SizedBox(
                         height: size.height * 0.02,
                       ),
-                      TextField(
-                          controller: _cityController,
-                          style: const TextStyle(
-                            color: Colors.white,
-                          ),
-                          cursorColor: Colors.white,
-                          decoration: const InputDecoration(
-                            hintText: '   Şehir',
-                            prefixText: ' ',
-                            hintStyle: TextStyle(color: Colors.white),
-                            focusColor: Colors.white,
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                              color: Colors.white,
-                            )),
-                            enabledBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(
-                              color: Colors.white,
-                            )),
-                          )),
-                      SizedBox(
-                        height: size.height * 0.02,
-                      ),
+                     DropdownButton<String>(
+        value: dropdownValue,
+        icon: const Icon(Icons.arrow_downward),
+        elevation: 16,
+        style: const TextStyle(color: Color.fromRGBO(10, 10, 10, 1)),
+        underline: Container(
+          height: 2,
+          color: const Color.fromARGB(255, 42, 90, 247),
+        ),
+        onChanged: (String? value) {
+          //kullanıcı bir öğe seçtiğinde çağrılır
+          setState(() {
+            dropdownValue = value!;
+          });
+        },
+        items: list.map<DropdownMenuItem<String>>((String value) {
+          return DropdownMenuItem<String>(
+            value: value,
+            child: Text(value),
+          );
+        }).toList(),
+
+        iconSize: 30.0,
+        iconEnabledColor: const Color.fromRGBO(231, 224, 224, 1),
+        isExpanded: true, //genişletmek için
+      ),
                       TextField(
                           controller: _adresController,
                           style: const TextStyle(
