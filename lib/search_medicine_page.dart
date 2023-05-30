@@ -8,9 +8,11 @@ import 'package:geolocator/geolocator.dart';
 // ignore: depend_on_referenced_packages
 import 'package:geocoding/geocoding.dart';
 import 'getDistanceFunciton.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class SearchMedicine extends StatefulWidget {
   const SearchMedicine({Key? key}) : super(key: key);
+
 
   @override
   // ignore: library_private_types_in_public_api
@@ -27,6 +29,8 @@ class _SearchMedicineState extends State<SearchMedicine> {
   bool _locationPermissionGranted = false;
   // ignore: prefer_final_fields, unused_field
   String _userCity = '';
+  late FirebaseAuth _auth;
+  String userID=" ";
 
 
 
@@ -38,7 +42,8 @@ class _SearchMedicineState extends State<SearchMedicine> {
     matchingDocuments = [];
     tmpmatchingDocuments=[];
      _checkLocationPermission();
-
+     _auth = FirebaseAuth.instance;
+     userID=_auth.currentUser!.uid;
   }
   
 
@@ -117,14 +122,22 @@ Future<List<QueryDocumentSnapshot<Object?>>?> sortMed(List<QueryDocumentSnapshot
       return;
     }
 
-    final QuerySnapshot querySnapshot = await _firestore
+   final QuerySnapshot querySnapshot = await _firestore
         .collection("Medicines")
-        .where("medName", isEqualTo: searchedMedName)
+        .where("medName",
+            isEqualTo: searchedMedName
+                .toLowerCase(),)   
         .get();
  
     setState(() {
       tmpmatchingDocuments = querySnapshot.docs.toList();
-     
+      for (int i = 0; i < tmpmatchingDocuments!.length; i++) {
+       final data = tmpmatchingDocuments![i].data() as Map<String, dynamic>;
+     if(data["UserID"]==userID)
+     {
+      tmpmatchingDocuments!.removeAt(i);
+     }
+  }
     });
     tmpmatchingDocuments=await sortMed(tmpmatchingDocuments);
     setState(() {
