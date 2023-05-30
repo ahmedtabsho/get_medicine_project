@@ -68,7 +68,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '130652190454',
     projectId: 'med-data-e1705',
     storageBucket: 'med-data-e1705.appspot.com',
-    iosClientId: '130652190454-kk2o7jjudkb07sm69eldppo3c38c7j2l.apps.googleusercontent.com',
+    iosClientId:
+        '130652190454-kk2o7jjudkb07sm69eldppo3c38c7j2l.apps.googleusercontent.com',
     iosBundleId: 'com.example.getMedicineProject',
   );
 
@@ -78,7 +79,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '130652190454',
     projectId: 'med-data-e1705',
     storageBucket: 'med-data-e1705.appspot.com',
-    iosClientId: '130652190454-kk2o7jjudkb07sm69eldppo3c38c7j2l.apps.googleusercontent.com',
+    iosClientId:
+        '130652190454-kk2o7jjudkb07sm69eldppo3c38c7j2l.apps.googleusercontent.com',
     iosBundleId: 'com.example.getMedicineProject',
   );
 }

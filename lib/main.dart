@@ -11,6 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner:
+          false, //üstteki debug yazısını engellemek için
       title: 'ACİL İLAÇ',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -20,8 +22,8 @@ class MyApp extends StatelessWidget {
           title: const Text('ACİL İLAÇ'),
         ),
         body: const Center(
-            child: StartWidget(),
-            ),
+          child: StartWidget(),
+        ),
       ),
     );
   }
