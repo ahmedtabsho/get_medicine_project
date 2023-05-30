@@ -36,9 +36,13 @@ dependencies:
   cupertino_icons: 
   cloud_firestore:
   fluttertoast:
+  geolocator: 
 
 
 dev_dependencies:
+  geodesy:
+  geocoding:
+  http:
   flutter_test:
     sdk: flutter
 
@@ -46,6 +50,7 @@ dev_dependencies:
   firebase_auth: 
   google_sign_in: 
   flutter_lints: 
+ 
 
 
 
