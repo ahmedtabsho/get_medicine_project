@@ -27,7 +27,7 @@ class _GetWanterInfoState extends State<GetWanterInfo> {
     super.initState();
     _auth = FirebaseAuth.instance;
     _firestore = FirebaseFirestore.instance;
-    // _nameController.text = _auth.currentUser!.displayName!;
+
   }
 
   Future<void> setNewReq() async {

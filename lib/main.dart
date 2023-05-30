@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'start_page.dart';
-
-void main() {
+void main() async{
   return (runApp(const MyApp()));
 }
 
