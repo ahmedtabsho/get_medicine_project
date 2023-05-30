@@ -30,13 +30,15 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+    
 
 
 
   cupertino_icons: 
   cloud_firestore:
   fluttertoast:
-  geolocator: 
+
+  geolocator:
 
 
 dev_dependencies:

@@ -6,6 +6,90 @@ import 'package:flutter/services.dart';
 import 'package:get_medicine_project/choice_operation.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
+const List<String> list = <String>[
+  'Adana',
+  'Adıyaman',
+  'Afyonkarahisar',
+  'Ağrı',
+  'Aksaray',
+  'Amasya',
+  'Ankara',
+  'Antalya',
+  'Ardahan',
+  'Artvin',
+  'Aydın',
+  'Balıkesir',
+  'Bartın',
+  'Batman',
+  'Bayburt',
+  'Bilecik',
+  'Bingöl',
+  'Bitlis',
+  'Bolu',
+  'Burdur',
+  'Bursa',
+  'Çanakkale',
+  'Çankırı',
+  'Çorum',
+  'Denizli',
+  'Diyarbakır',
+  'Düzce',
+  'Edirne',
+  'Elazığ',
+  'Erzincan',
+  'Erzurum',
+  'Eskişehir',
+  'Gaziantep',
+  'Giresun',
+  'Gümüşhane',
+  'Hakkâri',
+  'Hatay',
+  'Iğdır',
+  'Isparta',
+  'İstanbul',
+  'İzmir',
+  'Kahramanmaraş',
+  'Karabük',
+  'Karaman',
+  'Kars',
+  'Kastamonu',
+  'Kayseri',
+  'Kırıkkale',
+  'Kırklareli',
+  'Kırşehir',
+  'Kilis',
+  'Kocaeli',
+  'Konya',
+  'Kütahya',
+  'Malatya',
+  'Manisa',
+  'Mardin',
+  'Mersin',
+  'Muğla',
+  'Muş',
+  'Nevşehir',
+  'Niğde',
+  'Ordu',
+  'Osmaniye',
+  'Rize',
+  'Sakarya',
+  'Samsun',
+  'Siirt',
+  'Sinop',
+  'Sivas',
+  'Şanlıurfa',
+  'Şırnak',
+  'Tekirdağ',
+  'Tokat',
+  'Trabzon',
+  'Tunceli',
+  'Uşak',
+  'Van',
+  'Yalova',
+  'Yozgat',
+  'Zonguldak'
+];
+String dropdownValue = list.first;
 
 const List<String> list = <String>['Adana', 'Adıyaman', 'Afyonkarahisar', 'Ağrı', 'Aksaray', 'Amasya', 'Ankara', 'Antalya', 'Ardahan', 'Artvin', 'Aydın', 'Balıkesir', 'Bartın', 'Batman', 'Bayburt', 'Bilecik', 'Bingöl', 'Bitlis', 'Bolu', 'Burdur', 'Bursa', 'Çanakkale', 'Çankırı', 'Çorum', 'Denizli', 'Diyarbakır', 'Düzce', 'Edirne', 'Elazığ', 'Erzincan', 'Erzurum', 'Eskişehir', 'Gaziantep', 'Giresun', 'Gümüşhane', 'Hakkâri', 'Hatay', 'Iğdır', 'Isparta', 'İstanbul', 'İzmir', 'Kahramanmaraş', 'Karabük', 'Karaman', 'Kars', 'Kastamonu', 'Kayseri', 'Kırıkkale', 'Kırklareli', 'Kırşehir', 'Kilis', 'Kocaeli', 'Konya', 'Kütahya', 'Malatya', 'Manisa', 'Mardin', 'Mersin', 'Muğla', 'Muş', 'Nevşehir', 'Niğde', 'Ordu', 'Osmaniye', 'Rize', 'Sakarya', 'Samsun', 'Siirt', 'Sinop', 'Sivas', 'Şanlıurfa', 'Şırnak', 'Tekirdağ', 'Tokat', 'Trabzon', 'Tunceli', 'Uşak', 'Van', 'Yalova', 'Yozgat', 'Zonguldak'];
 String dropdownValue =list.first;
@@ -23,6 +107,7 @@ class _MedicineInfoWidgetState extends State<MedicineInfoWidget> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _medNameController = TextEditingController();
   // ignore: unused_field
+
   late final TextEditingController _cityController= TextEditingController();
   final TextEditingController _adresController = TextEditingController();
   final TextEditingController _medInfoController = TextEditingController();
@@ -37,6 +122,7 @@ class _MedicineInfoWidgetState extends State<MedicineInfoWidget> {
 
   Future<void> setNewMed() async {
     try {
+
       final newMed = _firestore.collection("Medicines").doc(); // doc() parametresiz kullanarak yeni bir doküman referansı alın
       if(_medNameController.text == ""  || _nameController.text == "" || _adresController.text == "" || _tcController.text == ""){
         throw Exception("doğru bilgiler girin lürfen.");
@@ -47,6 +133,7 @@ class _MedicineInfoWidgetState extends State<MedicineInfoWidget> {
           'UserID': _auth.currentUser!.uid,
           'UserTC': _tcController.text,
           'medName': _medNameController.text,
+
           'City':dropdownValue,
           'Adress': _adresController.text,
           'MedInfo': _medInfoController.text,
@@ -67,7 +154,6 @@ class _MedicineInfoWidgetState extends State<MedicineInfoWidget> {
         context,
         MaterialPageRoute(builder: (context) => const ChoiceOperation()),
       );
-
     } catch (error) {
       Fluttertoast.showToast(
         msg: "Tüm bilgileri doldurun, lütfen!!",
@@ -85,7 +171,7 @@ class _MedicineInfoWidgetState extends State<MedicineInfoWidget> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
 
-  
+
    
     //var city;
     
@@ -299,39 +385,40 @@ SizedBox(
                 ),
               ),
             ),
-            Padding(
-              padding:
+          ),
+        ),
+        Padding(
+          padding:
               EdgeInsets.only(top: size.height * .06, left: size.width * .02),
-              child: Align(
-                alignment: Alignment.topLeft,
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(
-                        Icons.arrow_back_ios_outlined,
-                        color: Colors.blue.withOpacity(.75),
-                        size: 26,
-                      ),
-                    ),
-                    SizedBox(
-                      width: size.width * 0.3,
-                    ),
-                    Text(
-                      "İlaç Bırak",
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.blue.withOpacity(.75),
-                          fontWeight: FontWeight.bold),
-                    )
-                  ],
+          child: Align(
+            alignment: Alignment.topLeft,
+            child: Row(
+              children: [
+                IconButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  icon: Icon(
+                    Icons.arrow_back_ios_outlined,
+                    color: Colors.blue.withOpacity(.75),
+                    size: 26,
+                  ),
                 ),
-              ),
-            )
-          ],
+                SizedBox(
+                  width: size.width * 0.3,
+                ),
+                Text(
+                  "İlaç Bırak",
+                  style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.blue.withOpacity(.75),
+                      fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+          ),
         )
-    );
+      ],
+    ));
   }
 }

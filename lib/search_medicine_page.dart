@@ -134,7 +134,6 @@ Future<List<QueryDocumentSnapshot<Object?>>?> sortMed(List<QueryDocumentSnapshot
   }
 
   void requestMedicine(String medName, String medId) {
-
     Navigator.push(
       context,
       MaterialPageRoute(builder: (context) => GetWanterInfo(medId)),
@@ -169,12 +168,14 @@ Future<List<QueryDocumentSnapshot<Object?>>?> sortMed(List<QueryDocumentSnapshot
               child: const Text("Ara"),
             ),
             const SizedBox(height: 10),
-            if (hasSearched && (matchingDocuments == null || matchingDocuments!.isEmpty))
+            if (hasSearched &&
+                (matchingDocuments == null || matchingDocuments!.isEmpty))
               const Text(
                 "Aradığınız ilaç şu anda veritabanımızda bulunmamaktadır.",
                 style: TextStyle(fontSize: 16),
               ),
-            if (!hasSearched || (matchingDocuments != null && matchingDocuments!.isNotEmpty))
+            if (!hasSearched ||
+                (matchingDocuments != null && matchingDocuments!.isNotEmpty))
               Expanded(
                 child: ListView.builder(
                   itemCount: matchingDocuments!.length,
