@@ -192,8 +192,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   padding: const EdgeInsets.all(7),
-                  child: Row(
-                    children: const [
+                  child: const Row(
+                    children: [
                       Icon(
                         Icons.login,
                         color: Colors.white,
