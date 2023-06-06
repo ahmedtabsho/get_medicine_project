@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get_medicine_project/medican_taken.dart';
 import 'package:get_medicine_project/medician_list.dart';
+import 'package:get_medicine_project/profile.dart';
 import 'login_page.dart';
 import 'medicine_info_page.dart';
 import 'search_medicine_page.dart';
@@ -99,7 +100,13 @@ class _ChoiceOperationState extends State<ChoiceOperation> {
                       MaterialPageRoute(builder: (context) => MedicianList()))
                 },
               // ignore: avoid_print
-              if (item == 1) {print('profil')},
+              if (item == 1)
+                {
+                  Navigator.push(
+                      context, //Seçilen öğenin değeri 0 ise Navigator.push'ı kullanarak MedicianList sayfasına gider
+                      MaterialPageRoute(
+                          builder: (context) => MedicianProfile()))
+                },
               if (item == 2)
                 {
                   Navigator.push(
