@@ -104,7 +104,6 @@ class _GetWanterInfoState extends State<GetWanterInfo> {
   late FirebaseFirestore _firestore;
   final TextEditingController _tcController = TextEditingController();
   final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _cityController = TextEditingController();
   final TextEditingController _adresController = TextEditingController();
 
   @override
