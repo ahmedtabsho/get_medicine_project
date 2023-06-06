@@ -7,7 +7,7 @@ import 'wanter_info_page.dart';
 import 'package:geolocator/geolocator.dart';
 // ignore: depend_on_referenced_packages
 import 'package:geocoding/geocoding.dart';
-import 'getDistanceFunciton.dart';
+import 'distance_service.dart';
 // ignore: depend_on_referenced_packages
 import 'package:firebase_auth/firebase_auth.dart';
 // ignore: depend_on_referenced_packages
