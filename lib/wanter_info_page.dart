@@ -315,7 +315,7 @@ class _GetWanterInfoState extends State<GetWanterInfo> {
                             padding: EdgeInsets.all(5.0),
                             child: Center(
                                 child: Text(
-                              "Kaydet",
+                              "İstek oluştur",
                               style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 20,

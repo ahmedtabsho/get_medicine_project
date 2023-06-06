@@ -60,6 +60,13 @@ class _ChoiceOperationState extends State<ChoiceOperation> {
             itemBuilder: (context) => [
               // açılır menüde görüntülenecek öğeleri tanımlar.
               const PopupMenuItem<int>(
+                value: 1,
+                child: Text(
+                  "Profil",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+              const PopupMenuItem<int>(
                 //açılır menüde bir seçeneği temsil eder.
                 value: 0,
                 child: Text(
@@ -68,13 +75,7 @@ class _ChoiceOperationState extends State<ChoiceOperation> {
                   style: TextStyle(color: Colors.black),
                 ),
               ),
-              const PopupMenuItem<int>(
-                value: 1,
-                child: Text(
-                  "Profil",
-                  style: TextStyle(color: Colors.black),
-                ),
-              ),
+              
               const PopupMenuItem<int>(
                 value: 2,
                 child: Text(
