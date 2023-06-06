@@ -21,8 +21,17 @@ class _MedicianListState extends State<MedicianList> {
       //sayfanın iskeleti için scaffold açtık build fonk. içinde. bu sayfa appbar ve body içeriyor.Scaffold ile ekranımızı oluştururuz.
       appBar: AppBar(
         //AppBar widgetı da, Scaffold ile oluşturduğumuz ekranın içinde, üst kısımda oluşturduğumuz bir yapıdır. Burada uygulamanın adını yazdık
-        title: const Text('Gönderilen İlaçlar'),
+        title: Row(
+          children: const [
+            CircleAvatar(
+              backgroundImage: AssetImage('assets/images/ilaçlar.png'),
+            ),
+            SizedBox(width: 10),
+            Text('Gönderilen İlaçlar'),
+          ],
+        ),
       ),
+
       body: StreamBuilder<QuerySnapshot>(
         //streambuilder firebase den anlık şekilde veri çekmesini sağlar.
         stream:
