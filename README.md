@@ -1,16 +1,12 @@
 # get_medicine_project
 
-A new Flutter project.
+## Introduction
 
-## Getting Started
+The ACİL İLAÇ project is designed to quickly and effectively meet medication needs during disaster situations. This Flutter application allows users to easily share and obtain necessary medications in emergencies.
 
-This project is a starting point for a Flutter application.
+Users can request the medications they need through the system, while others can offer their surplus medications to help. This ensures that medications reach the right people quickly and reliably, improving the critical process of medication supply during disaster situations.
 
-A few resources to get you started if this is your first Flutter project:
+## Presentation
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+For a detailed overview of the project, please view our [Canva Presentation]([https://www.canva.com/design/DAF4upiTvpw/SWamdDo89mXf_cf0QaMeRg/edit?utm_content=DAF4upiTvpw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton](https://www.canva.com/design/DAFlFiXYqN8/hZmq86qUvrkSW7sP5jR8JA/edit)).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
