@@ -8,5 +8,5 @@ Users can request the medications they need through the system, while others can
 
 ## Presentation
 
-For a detailed overview of the project, please view our [Canva Presentation]([https://www.canva.com/design/DAF4upiTvpw/SWamdDo89mXf_cf0QaMeRg/edit?utm_content=DAF4upiTvpw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton](https://www.canva.com/design/DAFlFiXYqN8/hZmq86qUvrkSW7sP5jR8JA/edit)).
+For a detailed overview of the project, please view our [Canva Presentation]([https://www.canva.com/design/DAF4upiTvpw/SWamdDo89mXf_cf0QaMeRg/edit?utm_content=DAF4upiTvpw&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton]).
 
